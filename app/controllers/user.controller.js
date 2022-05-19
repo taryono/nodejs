@@ -2,7 +2,11 @@ var UserService = require('../services/user.service')
 const jwt = require('jsonwebtoken');
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
-const user_attributtes = require('../models/attributes/user')
+const user_attributtes = require('../models/attributes/user');
+
+const config = require('../config/configRoles.js');
+const roles = config.roles;
+
 
 exports.findAll = async function(req, res, next) {
     // Validate request parameters, queries using express-validator

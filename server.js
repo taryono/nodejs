@@ -15,7 +15,7 @@ db.sequelize.sync({ force: false, logging: console.log }).then(() => {
 });
 watch('/', { recursive: false }, console.log);
 var corsOptions = {
-    origin: "http://localhost:3000"
+    origin: "http://localhost:4200"
 };
 
 app.use(cors(corsOptions));

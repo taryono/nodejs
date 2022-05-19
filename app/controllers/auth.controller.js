@@ -7,7 +7,7 @@ var UserService = require('../services/user.service')
 app.use(bodyParser.json());
 const refreshTokens = [];
 
-exports.Register = async function (req, res, next) {
+exports.Register = async function(req, res, next) {
     // Validate request parameters, queries using express-validator
 
     UserService.Register(req.body)
@@ -25,7 +25,7 @@ exports.Register = async function (req, res, next) {
         });
 }
 
-exports.Login = async function (req, res, next) {
+exports.Login = async function(req, res, next) {
     // Validate request parameters, queries using express-validator
 
     UserService.Login({ where: { username: req.body.username, password: req.body.password } })
@@ -36,7 +36,7 @@ exports.Login = async function (req, res, next) {
                 const refreshToken = jwt.sign({ username: user.username }, process.env.REFRESH_TOKEN_SECRET);
 
                 refreshTokens.push(refreshToken);
-                user.access_token = access_token; 
+                user.access_token = access_token;
                 user.save();
                 res.send({
                     user: user,
